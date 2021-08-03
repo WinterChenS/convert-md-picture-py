@@ -3,11 +3,11 @@
 
 import os
 import re
+#D:\private\study\project\blog-back\source\_posts
+g = os.walk(r"/Users/winterchen/IdeaProjects/blog-back/source/_posts")
 
-g = os.walk(r"D:\private\study\project\blog-back\source\_posts")
 
-
-reg = re.compile(r'http?://.*.(?:jpg|png)')
+reg = re.compile('http?:*.*.(?:jpg|png)', re.S)
 
 
 def select_md_file_from_dir():
