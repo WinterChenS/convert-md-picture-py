@@ -10,10 +10,10 @@ import time
 
 
 #/Users/winterchen/IdeaProjects/blog-back/source/_posts
-g = os.walk(r"D:\private\study\project\blog-back\source\_posts")
+g = os.walk(r"D:\private\study\project\material-back\source\_posts")
 
 
-regex = r"(http.*?jpg)"
+regex = r"(http?://.*?jpg)"
 local_path = "D:\\private\\study\\project\\img\\posts\\"
 new_host_name_prefix = r"https://cdn.jsdelivr.net/gh/WinterChenS/img/posts/"
 
@@ -55,6 +55,8 @@ def read_md_file(file_path, file_name):
                         urllib.request.urlretrieve(url, local_path_filename)
                         new_url = new_host_name_prefix + name
                         print("新地址为: " + new_url)
+                        url = urllib.parse.unquote(url)
+                        print("替换前的URL：" + url)
                         line = re.sub(url, new_url, line)
                     except Exception as e:
                         print("报错的文件：" + file_path + "报错的行：" + line)
